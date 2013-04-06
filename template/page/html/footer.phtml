@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+	 $str_top_sellers = Mage::getModel('catalog/category')->load(15)->getUrl();
+?>
+
+<div class="footer-container">
+  <div class="footer">
+    <div class="mainmenu">
+	  <div class="footerdivhead"><?php echo $this->__('Main menu') ?></div>	
+      <ul class="mailmenuul">
+        <li><a href="<?php echo $this->getUrl('') ?>"><?php echo $this->__('Home') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('products') ?>"><?php echo $this->__('Products') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('specials') ?>"><?php echo $this->__('Specials') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('shipping') ?>"><?php echo $this->__('Shipping') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('contact-us') ?>"><?php echo $this->__('Contacts') ?></a></li>
+      </ul>
+    </div>
+    <div class="youraccount">
+	  <div class="footerdivhead"><?php echo $this->__('Your Account') ?></div>			
+      <ul class="mailmenuul">
+        <li><a href="<?php echo $this->getUrl('customer/account/login/') ?>"><?php echo $this->__('Log in') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('customer/account/create/') ?>"><?php echo $this->__('Create an Account') ?></a></li>
+        <li><a href="<?php echo $this->getUrl('shipping') ?>"><?php echo $this->__('Shipping &amp; Returns') ?></a></li>
+      </ul>	
+	</div>
+    <div class="ouroffers">
+		<div class="footerdivhead"><?php echo $this->__('Our Offers') ?></div>			
+		<ul class="mailmenuul">
+			<li><a href="<?php echo $this->getUrl('newproducts') ?>"><?php echo $this->__('New products') ?></a></li>
+			<li><a href="<?=$str_top_sellers?>"><?php echo $this->__('Top sellers') ?></a></li>
+			<li><a href="<?php echo $this->getUrl('specials') ?>"><?php echo $this->__('Specials') ?></a></li>
+			<li><a href="<?php echo $this->getUrl('manufactures') ?>"><?php echo $this->__('Manufacturers') ?></a></li>
+		
+		</ul>				
+	</div>
+    <div class="helpline"><!--telephone.jpg-->
+		<div class="footerdivhead"><?php echo $this->__('Customer Service Helpline') ?></div>
+		<ul><li class="telephone"></li><li class="number">0203-556-7436</li><li class="modfri"> Monday to Friday</li></ul>
+		
+	</div>
+    <div class="weaccept">
+		<div class="footerdivhead"><?php echo $this->__('We Accept') ?></div>
+		<ul class="acceptImgul"><li class="verifiedbyvisa"></li><li class="visa"></li><li class="mastercard"></li></ul>
+		<ul class="acceptImgul marbot"><li class="mastercardsecurecode"></li><li class="maestro"></li><li class="paypal"></li></ul>
+		<div class="footerdivhead brdtop"><ul class="contactus"><li class="headli"><?php echo $this->__('Contact us') ?></li><li class="twitter"></li><li class="facebook"></li><li class="youtube"></li></ul> </div>
+	</div>
+    <?php //echo $this->getChildHtml() ?>
+   </div>
+  <div class="copyright">
+    <address>
+    <?php echo $this->getCopyright() ?> |
+    <label><?php echo $this->__('Terms &amp; Conditions') ?> </label>
+    |
+	<label><?php echo $this->__('Privacy Policy') ?></label>
+	|
+	<label>web design by <a href="http://www.webbyfox.co.uk"><?php echo $this->__('WEBBYFOX') ?></a></label>
+    </address>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="special_home">
+  <div class="special_head">SPECIALS</div>
+<?php
+$str_BaseUrl	=	Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+$productcollection = Mage::getModel('catalog/product')->getCollection();
+$productcollection->addAttributeToSelect('*');
+
+$i					= 	0;
+$specialproducts	= 	array();
+
+foreach ($productcollection as $product) {
+	$specialprice 	= 	number_format($product->getFinalPrice(),2);
+	$price 			= 	number_format($product->getPrice(),2);
+	/**
+	 * get categories from a product
+	 */
+	$categoryIds = $product->getCategoryIds();
+	/**
+	 * looping through the array of category ids
+	 */
+	foreach($categoryIds as $categoryId) {
+		if($categoryId == 59) {
+			//if ($specialprice != $price) {
+				$specialproducts[$i]['price'] 			= $price;
+				$specialproducts[$i]['specialprice'] 	= $specialprice;
+				$specialproducts[$i]['url'] 			= $product->getProductUrl();
+				$specialproducts[$i]['name'] 			= $this->htmlEscape($product->getName());
+				$specialproducts[$i]['image'] 			= $product->getSmallImageUrl(170,170);
+				$specialproducts[$i]['sku'] 			= $product->getSku();
+				$specialproducts[$i]['id'] 				= $product->getId();
+			//}  
+			$i++;
+		}
+	}	
+}
+shuffle($specialproducts);
+$x = 0;
+?>
+  <div class="special_desc">
+    <?php
+foreach ($specialproducts as $specialproduct) {
+	$x++;
+	if($x > 0 && $x < 2 ) { 
+		// ===== IMAGE HEIGHT =====
+		$imagePath 	= $specialproduct['image']; // like http://example.com/media/myfolder/myimage.jpg
+		 // changing url link of image into directory link
+		$dirImg		= Mage::getBaseDir().str_replace("/",DS,strstr($imagePath,'/media'));
+		// getting image width and height
+		if (file_exists($dirImg)) {
+			$imageObj	= new Varien_Image($dirImg);
+			$width		= $imageObj->getOriginalWidth();
+			$height		= $imageObj->getOriginalHeight();
+			//echo $width." x ".$height;
+			if($height > 153)	$str_giveHeight	=	'height="153"';
+			else				$str_giveHeight = 	"";
+		}
+		// ===== IMAGE HEIGHT =====
+?>
+    <a href="<?php echo $specialproduct['url']; ?>" title="<?php echo $specialproduct['name']; ?>"><img src="<?php echo $specialproduct['image']; ?>"  alt="<?php echo $specialproduct['name']; ?>" <?=$str_giveHeight?> /></a>
+    <h2><?php echo $specialproduct['name']; ?></h2>
+    <!--<p>RRP: <?php echo $specialproduct['price']; ?><br />-->
+    <div class="buynewprice">
+      <label class="buynew">Buy new:</label>
+      <label class="buyprice"> &pound; <?php echo $specialproduct['specialprice']; ?></label>
+    </div>
+    <div>
+      <form action="<?=$str_BaseUrl?>checkout/cart/add?product=<?=$specialproduct['id']?>&qty=1" method="post" name="frm_special">
+        <input type="submit" value="Add To Cart" class="add_to_cart" name="addtocart"/>
+      </form>
+    </div>
+    <?php 
+	}
+} ?>
+  </div>
+</div>

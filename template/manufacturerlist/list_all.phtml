@@ -1,0 +1,10 @@
+<?php /*?><div class="page-head">
+	<h3><?php echo $this->__('Manufacturers') ?></h3>
+</div><?php */?>
+
+<div class="all_manufacturers">
+  <?php foreach ($this->getAllManufacturers() as $_m): ?>
+  <div class="manufacturer"> <a href="<?php echo $this->getUrl('catalogsearch/advanced/result')."?manufacturer[]=".$_m['value'] ?>" title="<?php echo $this->htmlEscape($_m['label']) ?>"><?php echo $this->htmlEscape($_m['label']) ?></a> </div>
+  <?php endforeach; ?>
+  <div style="clear:both;"></div>
+</div>

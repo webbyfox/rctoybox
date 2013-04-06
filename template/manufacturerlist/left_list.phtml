@@ -1,0 +1,16 @@
+<div class="manufacturer">
+  <div class="head"> <strong> <span><?php echo $this->__('Search by brand') ?><a name="manufacturerlist-box"></a></span> </strong> </div>
+  
+  <div class="content">
+  	<!--<h5>Manufacturer :</h5>-->
+    <select name="menu" id="menu" onchange="window.location.href=this.value" >
+      <option value="#" selected="selected"><?php echo $this->__('Select brand') ?></option>
+      <?php foreach ($this->getManufacturers() as $_m): ?>
+      <option value="<?php echo $this->getUrl('catalogsearch/advanced/result')."?manufacturer[]=".$_m['value'] ?>"> <a href="<?php echo $this->getUrl('catalogsearch/advanced/result')."?manufacturer[]=".$_m['value'] ?>" title="<?php echo $this->htmlEscape($_m['label']) ?>"><?php echo $this->htmlEscape($_m['label']) ?></a><?php echo $this->getCount($_m['value']);?> </option>
+      <?php endforeach; ?>
+    </select>
+  </div>
+  <?php if($this->getOverallTotal()>$this->getTotal()):?>
+  <div class="actions"> <a href="<?php echo $this->getUrl('manufacturers') ?>"><small><?php echo $this->__('View All') ?></small></a> </div>
+  <?php endif; ?>
+</div>	

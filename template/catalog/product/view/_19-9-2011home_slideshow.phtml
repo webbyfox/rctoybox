@@ -1,0 +1,35 @@
+<!--[if lte IE 7]>
+<style type="text/css">
+ul li{
+	display:inline;
+	/*float:left;*/
+}
+</style>
+<![endif]-->
+<!--[if gt IE 5.5]>
+<style type="text/css">
+#homemain #homeslides{ width:4000px !important; }        
+#homemain #image2{ margin-left:433px; }
+#homemain #image3{ margin-left:431px; }
+#homemain #image4{ margin-left:436px; }
+</style>
+<![endif]-->
+<div id="homemain">
+  <div id="homegallery">
+    <div id="homeslides">
+      <div class="slide"><img src="<?=$this->getSkinUrl('images/home_slideshow/sample_slides/macbook.jpg')?>" width="475" height="299" alt="homeside" /></div>
+      <div class="slide" id="image2"><img src="<?=$this->getSkinUrl('images/home_slideshow/sample_slides/iphone.jpg')?>" width="475" height="299" alt="homeside" /></div>
+      <div class="slide" id="image3"><img src="<?=$this->getSkinUrl('images/home_slideshow/sample_slides/imac.jpg')?>" width="475" height="299" alt="homeside" /></div>
+      <div class="slide" id="image4"><img src="<?=$this->getSkinUrl('images/home_slideshow/sample_slides/info.jpg')?>" width="475" height="299" alt="side" /></div>
+    </div>
+    <div id="homemenu">
+      <ul>
+        <li class="homefbar">&nbsp;</li>
+        <li class="menuItem"><a href=""><img src="<?=$this->getSkinUrl('images/grey_inactive.jpg')?>" alt="thumbnail"  class="slideimg"/></a></li>
+        <li class="menuItem"><a href=""><img src="<?=$this->getSkinUrl('images/grey_inactive.jpg')?>" alt="thumbnail"  class="slideimg"/></a></li>
+        <li class="menuItem"><a href=""><img src="<?=$this->getSkinUrl('images/grey_inactive.jpg')?>" alt="thumbnail"  class="slideimg"/></a></li>
+        <li class="menuItem"><a href=""><img src="<?=$this->getSkinUrl('images/grey_inactive.jpg')?>" alt="thumbnail"  class="slideimg"/></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

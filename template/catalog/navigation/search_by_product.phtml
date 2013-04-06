@@ -1,0 +1,20 @@
+<?php $str_baseURL	=	Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>
+<div id="left_cat">
+  <div class="block block-cart123">
+    <div class="block-title"> <strong><span><?php echo $this->__('Find by product') ?></span></strong> </div>
+    <div class="menu_top">
+      <div class="block-content">
+        <h4 class="no-display"> <?php echo $this->__('Category Navigation:') ?></h4>
+        <ul id="nav_vert">
+          <li class="level0 nav-1"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=helicopters"><span>Helicopters</span></a></li>
+		  <li class="level0 nav-2"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=cars"><span>Cars</span></a></li>
+		  <li class="level0 nav-3"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=laptop+batteries"><span>Remote controlled</span></a></li>
+		  <li class="level0 nav-4"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=bots"><span>Boats</span></a></li>
+		  <li class="level0 nav-5"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=tanks"><span>Tanks</span></a></li>
+		  <li class="level0 nav-6"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=nitros"><span>Nitros</span></a></li>
+		  <li class="level0 nav-7"> <a href="<?=$str_baseURL?>catalogsearch/result/?q=accessories"><span>Accessories</span></a></li>		  
+        </ul>
+      </div>
+    </div>
+    <?php echo $this->getChildHtml('topLeftLinks') ?> </div>
+</div>

@@ -1,0 +1,15 @@
+<div id="left_cat">
+<div class="block block-cart123">
+  <div class="block-title"> <strong><span><?php echo $this->__('categories') ?></span></strong> </div>
+  <div class="menu_top">
+    <div class="block-content">
+      <h4 class="no-display"> <?php echo $this->__('Category Navigation:') ?></h4>
+      <ul id="nav_vert">
+        <?php foreach ($this->getStoreCategories() as $_category): ?>
+        <?php echo $this->drawItem($_category) ?>
+        <?php endforeach ?>
+      </ul>
+    </div>
+  </div>
+  <?php echo $this->getChildHtml('topLeftLinks') ?> </div>
+</div>

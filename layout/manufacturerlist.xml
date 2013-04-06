@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="left">
+			<block type="manufacturerlist/list" name="manufacture.list" template="manufacturerlist/left_list.phtml" after="catalog.by.product" ifconfig="catalog/manufacturerlist/enabled" />
+        </reference>
+    </default>
+	
+	<manufacturers_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+			<action method="addCss"><stylesheet>css/manufacturers.css</stylesheet></action>
+		</reference>
+        <reference name="content">
+			<block type="manufacturerlist/list" template="manufacturerlist/list_all.phtml" />
+        </reference>
+	</manufacturers_index_index>
+</layout>

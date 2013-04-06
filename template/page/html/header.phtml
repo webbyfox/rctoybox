@@ -1,0 +1,74 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php
+
+$mageFilename = 'app/Mage.php';
+require_once $mageFilename;
+
+umask(0);
+Mage::app();
+
+// $cart = Mage::getSingleton('checkout/cart')->getItemsCount();
+// $cart = Mage::helper('checkout/cart')->getItemsCount();
+$top_cart 	=	Mage::helper('checkout/cart')->getCart()->getItemsCount();
+$top_price	=	Mage::helper('checkout/cart')->getQuote()->getSubtotal(); 
+$str_currecny_code	=	Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+?> 
+<div class="header-container">
+  <div class="header">
+    <?php if ($this->getIsHomePage()):?>
+    <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+    <?php else:?>
+    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+    <?php endif?>
+    <div class="quick-access">
+      <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
+      <?php echo $this->getChildHtml('topLinks') ?> <?php echo $this->getChildHtml('store_language') ?>
+      <?php //echo $storePhone = Mage::getStoreConfig('general/store_information/phone');?>
+      <div class="toptelephone"><img src="<?=$this->getSkinUrl('images/orange_phone.jpg')?>"  />
+        <label class="callus"><?php echo $this->__('Call Us:') ?> </label>
+        <label class="phonenumber"><?php echo $this->__('0203-556-7436') ?></label>
+      </div>
+    </div>
+	<?php $str_cart	=	$this->getUrl('checkout/cart'); ?>
+    <div class="uk_cart">
+      <div><img src="<?=$this->getSkinUrl('images/free_uk_delivery.jpg')?>"  /></div>
+      <div class="shoppingcart">
+	  	<div class="cartImage"><a href="<?=$str_cart?>"><img src="<?=$this->getSkinUrl('images/transparent.png')?>"  width="37" height="31" /></a></div>
+	  	<?php if($top_price > 0 ) $top_price	=	__(number_format($top_price,2)); ?>
+	  	<div class="cart_info"><?=$top_cart;?> <a href="<?=$str_cart?>"><?php echo $this->__('item(s)') ?></a>   :<?=$str_currecny_code?><?=$top_price?></div>
+	  </div>
+    </div>
+    <?php echo $this->getChildHtml('topContainer'); ?> </div>
+</div>
+<div class="menu_search"> <?php  echo $this->getChildHtml('topMenu') ?>
+  <div class="topSearchC"> <?php echo $this->getChildHtml('topSearch') ?> </div>
+</div>
+<div class="clear_both"></div>

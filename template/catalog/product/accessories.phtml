@@ -1,0 +1,23 @@
+<?php 
+	$str_currecny_code	=	Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); 
+	$str_helicopter_url		=	Mage::getModel("catalog/category")->load(13)->getUrl();
+	$str_car_url	=	Mage::getModel("catalog/category")->load(3)->getUrl();
+?> 
+<div class="accessories">
+  <div class="accessories_products_head"><?php echo $this->__('Hot Deals') ?></div>
+  <div class="category-products">
+  	<div class="div1">
+		<h1><?php echo $this->__('Helicopters') ?></h1>
+		<div class="img"><img src="<?=$this->getSkinUrl('images/helicopters_deal.jpg')?>"  /></div>
+		<div class="starting"><?php echo $this->__('Starts From') ?> <?=$str_currecny_code?> <?php echo $this->__('23.99') ?></div>
+		<div class="viewmore"><a href="<?=$str_helicopter_url?>"><?php echo $this->__('View More') ?></a></div>
+	</div>
+  	<div class="div2">
+		<h1><?php echo $this->__('Cars') ?></h1>
+		<div class="img"><img src="<?=$this->getSkinUrl('images/cars_deal.jpg')?>"  /></div>
+		<div class="starting"><?php echo $this->__('Starts From') ?> <?=$str_currecny_code?> <?php echo $this->__('89.99') ?></div>
+		<div class="viewmore"><a href="<?=$str_car_url?>"><?php echo $this->__('View More') ?></a></div>		
+	</div>
+    <div class="clear_both"></div>
+  </div>
+</div>
